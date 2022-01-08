@@ -20,7 +20,7 @@ import retrofit2.http.Query;
 
 public class RequestManager {
     Context context;
-    Retrofit retrofit=new Retrofit.Builder()
+    Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("https://api.pexels.com/v1/\n")
             .addConverterFactory(GsonConverterFactory.create())
             .build();
@@ -29,17 +29,17 @@ public class RequestManager {
         this.context = context;
     }
 
-public void getCuratedWallpapers(CuratedResponseListener listener,String page){
-        CallWallpaperList callWallpaperList=retrofit.create(CallWallpaperList.class);
-        Call<CuratedApiResponse>call=callWallpaperList.getWallpapers(page,"78");
+    public void getCuratedWallpapers(CuratedResponseListener listener, String page) {
+        CallWallpaperList callWallpaperList = retrofit.create(CallWallpaperList.class);
+        Call<CuratedApiResponse> call = callWallpaperList.getWallpapers(page, "78");
         call.enqueue(new Callback<CuratedApiResponse>() {
             @Override
             public void onResponse(Call<CuratedApiResponse> call, Response<CuratedApiResponse> response) {
-                if (!response.isSuccessful()){
-                    Toast.makeText(context,"An Error occurred",Toast.LENGTH_SHORT).show();
+                if (!response.isSuccessful()) {
+                    Toast.makeText(context, "An Error occurred", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                listener.onFetch(response.body(),response.message());
+                listener.onFetch(response.body(), response.message());
             }
 
             @Override
@@ -48,21 +48,21 @@ public void getCuratedWallpapers(CuratedResponseListener listener,String page){
 
             }
         });
-}
+    }
 
 
-    public void searchCuratedWallpapers(SearchResponseListener listener, String page,String query){
-       CallWallpaperListSearch  callWallpaperListSearch=retrofit.create(CallWallpaperListSearch.class);
-        Call<SearchApiResponse>call=callWallpaperListSearch.searchgetWallpapers(query,page,"78");
+    public void searchCuratedWallpapers(SearchResponseListener listener, String page, String query) {
+        CallWallpaperListSearch callWallpaperListSearch = retrofit.create(CallWallpaperListSearch.class);
+        Call<SearchApiResponse> call = callWallpaperListSearch.searchgetWallpapers(query, page, "78");
 
         call.enqueue(new Callback<SearchApiResponse>() {
             @Override
             public void onResponse(Call<SearchApiResponse> call, Response<SearchApiResponse> response) {
-                if (!response.isSuccessful()){
-                    Toast.makeText(context,"An Error occurred",Toast.LENGTH_SHORT).show();
+                if (!response.isSuccessful()) {
+                    Toast.makeText(context, "An Error occurred", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                listener.onFetch(response.body(),response.message());
+                listener.onFetch(response.body(), response.message());
             }
 
             @Override
@@ -74,29 +74,28 @@ public void getCuratedWallpapers(CuratedResponseListener listener,String page){
     }
 
 
-    private interface CallWallpaperList{
+    private interface CallWallpaperList {
         @Headers({
                 "Accept:application/json",
                 "Authorization: 563492ad6f91700001000001b85bae317b784e1bb46b47f5741911f3"
         })
         @GET("curated/")
         Call<CuratedApiResponse> getWallpapers(
-                @Query("page")String page,
+                @Query("page") String page,
                 @Query("per_page") String per_page
         );
     }
 
 
-
-    private interface CallWallpaperListSearch{
+    private interface CallWallpaperListSearch {
         @Headers({
                 "Accept:application/json",
                 "Authorization: 563492ad6f91700001000001b85bae317b784e1bb46b47f5741911f3"
         })
         @GET("search")
         Call<SearchApiResponse> searchgetWallpapers(
-                @Query("query")String query,
-                @Query("page")String page,
+                @Query("query") String query,
+                @Query("page") String page,
                 @Query("per_page") String per_page
         );
     }

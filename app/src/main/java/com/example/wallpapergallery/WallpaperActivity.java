@@ -20,7 +20,7 @@ import com.squareup.picasso.Picasso;
 
 public class WallpaperActivity extends AppCompatActivity {
     ImageView imageView_wallpaper;
-    FloatingActionButton fab_download,fab_wallpaper;
+    FloatingActionButton fab_download, fab_wallpaper;
     Photo photo;
 
     @Override
@@ -28,51 +28,51 @@ public class WallpaperActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wallpaper);
 
-        imageView_wallpaper=findViewById(R.id.imageView_wallpaper);
-        fab_download=findViewById(R.id.fab_download);
-        fab_wallpaper=findViewById(R.id.fab_wallpaper);
+        imageView_wallpaper = findViewById(R.id.imageView_wallpaper);
+        fab_download = findViewById(R.id.fab_download);
+        fab_wallpaper = findViewById(R.id.fab_wallpaper);
 
-        photo= (Photo) getIntent().getSerializableExtra("photo");
+        photo = (Photo) getIntent().getSerializableExtra("photo");
 
         Picasso.get().load(photo.getSrc().getOriginal()).placeholder(R.drawable.placeholder).into(imageView_wallpaper);
 
         fab_download.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DownloadManager downloadManager=null;
-                downloadManager=(DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+                DownloadManager downloadManager = null;
+                downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
 
 
-                Uri uri=Uri.parse(photo.getSrc().getLarge());
+                Uri uri = Uri.parse(photo.getSrc().getLarge());
 
-                DownloadManager.Request request=new DownloadManager.Request(uri);
+                DownloadManager.Request request = new DownloadManager.Request(uri);
 
 
                 request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE | DownloadManager.Request.NETWORK_WIFI)
-                .setAllowedOverRoaming(false)
-                        .setTitle("Wallpaper_"+photo.getPhotographer())
+                        .setAllowedOverRoaming(false)
+                        .setTitle("Wallpaper_" + photo.getPhotographer())
                         .setMimeType("image'jpeg")
                         .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
 
-                        .setDestinationInExternalPublicDir(Environment.DIRECTORY_PICTURES,"Wallpaper_"+photo.getPhotographer()+".jpg");
+                        .setDestinationInExternalPublicDir(Environment.DIRECTORY_PICTURES, "Wallpaper_" + photo.getPhotographer() + ".jpg");
 
 
                 downloadManager.enqueue(request);
-                Toast.makeText(WallpaperActivity.this,"Download Completed",Toast.LENGTH_SHORT).show();
+                Toast.makeText(WallpaperActivity.this, "Download Completed", Toast.LENGTH_SHORT).show();
             }
         });
 
         fab_wallpaper.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                WallpaperManager wallpaperManager=WallpaperManager.getInstance(WallpaperActivity.this);
-                Bitmap bitmap=((BitmapDrawable)imageView_wallpaper.getDrawable()).getBitmap();//getting drawable file from imageview,and casting it to bitmap drawable and casting to bitmap
+                WallpaperManager wallpaperManager = WallpaperManager.getInstance(WallpaperActivity.this);
+                Bitmap bitmap = ((BitmapDrawable) imageView_wallpaper.getDrawable()).getBitmap();//getting drawable file from imageview,and casting it to bitmap drawable and casting to bitmap
                 try {
                     wallpaperManager.setBitmap(bitmap);
-                    Toast.makeText(WallpaperActivity.this,"Wallpaper Succesfully setted!!",Toast.LENGTH_SHORT).show();
-                }catch (Exception e){
+                    Toast.makeText(WallpaperActivity.this, "Wallpaper Succesfully setted!!", Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
                     e.printStackTrace();
-                    Toast.makeText(WallpaperActivity.this,"Wallpaper adding failed",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(WallpaperActivity.this, "Wallpaper adding failed", Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -18,9 +18,9 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class CuratedAdapter extends RecyclerView.Adapter<CuratedViewHolder> {
-     Context context;
-     List<Photo> list;
-     OnRecyclerClickListener listener;
+    Context context;
+    List<Photo> list;
+    OnRecyclerClickListener listener;
 
     public CuratedAdapter(Context context, List<Photo> list, OnRecyclerClickListener listener) {
         this.context = context;
@@ -31,7 +31,7 @@ public class CuratedAdapter extends RecyclerView.Adapter<CuratedViewHolder> {
     @NonNull
     @Override
     public CuratedViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new CuratedViewHolder(LayoutInflater.from(context).inflate(R.layout.home_list,parent,false));
+        return new CuratedViewHolder(LayoutInflater.from(context).inflate(R.layout.home_list, parent, false));
     }
 
     @Override
@@ -53,14 +53,14 @@ public class CuratedAdapter extends RecyclerView.Adapter<CuratedViewHolder> {
     }
 }
 
-class  CuratedViewHolder extends RecyclerView.ViewHolder{
+class CuratedViewHolder extends RecyclerView.ViewHolder {
     CardView home_list_container;
     ImageView imageView_list;
 
     public CuratedViewHolder(@NonNull View itemView) {
         super(itemView);
-        home_list_container=itemView.findViewById(R.id.home_list_container);
-        imageView_list=itemView.findViewById(R.id.imageView_list);
+        home_list_container = itemView.findViewById(R.id.home_list_container);
+        imageView_list = itemView.findViewById(R.id.imageView_list);
 
     }
 }

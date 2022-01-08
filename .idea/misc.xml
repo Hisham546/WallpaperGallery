@@ -3,9 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/MUHAMMED HISHAM/WallpaperGallery/app/src/main/res/drawable/bg_cl.xml" value="0.17685185185185184" />
         <entry key="..\:/Users/MUHAMMED HISHAM/WallpaperGallery/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.13958333333333334" />
+        <entry key="..\:/Users/MUHAMMED HISHAM/WallpaperGallery/app/src/main/res/drawable/ic_next.xml" value="0.16944444444444445" />
+        <entry key="..\:/Users/MUHAMMED HISHAM/WallpaperGallery/app/src/main/res/drawable/ic_prev.xml" value="0.16944444444444445" />
         <entry key="..\:/Users/MUHAMMED HISHAM/WallpaperGallery/app/src/main/res/drawable/ic_search.xml" value="0.13958333333333334" />
         <entry key="..\:/Users/MUHAMMED HISHAM/WallpaperGallery/app/src/main/res/layout/activity_main.xml" value="0.17980072463768115" />
+        <entry key="..\:/Users/MUHAMMED HISHAM/WallpaperGallery/app/src/main/res/layout/activity_splashscreen.xml" value="0.17346014492753623" />
         <entry key="..\:/Users/MUHAMMED HISHAM/WallpaperGallery/app/src/main/res/layout/activity_wallpaper.xml" value="0.24375" />
         <entry key="..\:/Users/MUHAMMED HISHAM/WallpaperGallery/app/src/main/res/layout/home_list.xml" value="0.17980072463768115" />
         <entry key="..\:/Users/MUHAMMED HISHAM/WallpaperGallery/app/src/main/res/menu/menu.xml" value="0.24375" />
