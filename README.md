@@ -1,4 +1,4 @@
 # WallpaperGallery  is an application builded for finding best wallpapers 
-A wallpaper app written in native android(java)
+A wallpaper app written in native android using java
 
-pexel api for getting walls.
+Wallpapers are fetching from pexel
